@@ -4,20 +4,20 @@ App web para mapear pontos de **rede**, **telefone**, **câmera** e **switch** d
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 📄 Carrega plantas em PDF ou imagem
-- 🖱 Marca pontos clicando diretamente na planta
-- ✏️ Edita o nome de cada ponto
-- 💬 Adiciona anotações de texto livres
-- 💾 Salva e restaura sessão (pontos não se perdem)
-- 📤 Exporta a planta com os pontos em **PDF**
-- 📊 Exporta lista de pontos em **CSV**
-- 🔍 Zoom com teclado ou botões
+-  Carrega plantas em PDF ou imagem
+-  Marca pontos clicando diretamente na planta
+-  Edita o nome de cada ponto
+-  Adiciona anotações de texto livres
+-  Salva e restaura sessão (pontos não se perdem)
+-  Exporta a planta com os pontos em **PDF**
+-  Exporta lista de pontos em **CSV**
+-  Zoom com teclado ou botões
 
 ---
 
-## 🚀 Como rodar com Docker
+##  Como rodar com Docker
 
 ### Pré-requisitos
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e aberto
