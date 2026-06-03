@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapeador de Planta Baixa</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🗺 Planta Baixa</h1>
+    <div class="tools">
+      <button class="tool-btn active-cursor" id="btn-cursor" onclick="setTool('cursor')">↖ Cursor</button>
+      <div class="sep"></div>
+      <button class="tool-btn" id="btn-rede" onclick="setTool('rede')">
+        <span class="dot" style="background:var(--rede)"></span> Rede
+      </button>
+      <button class="tool-btn" id="btn-telefone" onclick="setTool('telefone')">
+        <span class="dot" style="background:var(--telefone)"></span> Telefone
+      </button>
+      <button class="tool-btn" id="btn-camera" onclick="setTool('camera')">
+        <span class="dot" style="background:var(--camera)"></span> Câmera
+      </button>
+      <button class="tool-btn" id="btn-switch" onclick="setTool('switch')">
+        <span class="dot" style="background:var(--switch)"></span> Switch
+      </button>
+      <button class="tool-btn" id="btn-texto" onclick="setTool('texto')">
+        <span class="dot" style="background:var(--texto)"></span> Texto
+      </button>
+      <div class="sep"></div>
+      <button class="action-btn" onclick="document.getElementById('pdf-input').click()">📂 Carregar PDF</button>
+    </div>
+    <div class="zoom-controls">
+      <button class="zoom-btn" onclick="changeZoom(-0.2)">−</button>
+      <span class="zoom-label" id="zoom-label">100%</span>
+      <button class="zoom-btn" onclick="changeZoom(0.2)">+</button>
+      <button class="zoom-btn" onclick="resetZoom()">⊙</button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <div id="canvas-area">
+      <div id="drop-zone" onclick="document.getElementById('pdf-input').click()">
+        <div class="drop-icon">📄</div>
+        <div class="drop-text">
+          <p>Clique ou arraste o PDF aqui</p>
+          <span>.pdf · planta baixa</span>
+        </div>
+      </div>
+      <div id="canvas-wrapper">
+        <canvas id="pdf-canvas"></canvas>
+        <div id="markers-layer"></div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-header">Pontos mapeados</div>
+      <div class="counts">
+        <div class="count-item">
+          <div class="count-num" id="cnt-rede" style="color:var(--rede)">0</div>
+          <div class="count-lbl" style="color:var(--rede)">Rede</div>
+        </div>
+        <div class="count-item">
+          <div class="count-num" id="cnt-tel" style="color:var(--telefone)">0</div>
+          <div class="count-lbl" style="color:var(--telefone)">Tel.</div>
+        </div>
+        <div class="count-item">
+          <div class="count-num" id="cnt-cam" style="color:var(--camera)">0</div>
+          <div class="count-lbl" style="color:var(--camera)">Câm.</div>
+        </div>
+        <div class="count-item">
+          <div class="count-num" id="cnt-switch" style="color:var(--switch)">0</div>
+          <div class="count-lbl" style="color:var(--switch)">SW</div>
+        </div>
+      </div>
+      <div class="markers-list" id="markers-list">
+        <div class="empty-list">Nenhum ponto marcado.<br>Selecione uma ferramenta e clique na planta.</div>
+      </div>
+      <div class="sidebar-footer">
+        <button class="export-btn" onclick="saveSession()" style="border-color:var(--accent);color:var(--accent)">💾 Salvar sessão</button>
+        <button class="export-btn" onclick="loadSession()" style="border-color:var(--texto);color:var(--texto)">📂 Restaurar sessão</button>
+        <button class="export-btn exp-pdf" onclick="exportPDF()">⬇ Exportar PDF</button>
+        <button class="export-btn" onclick="exportCSV()">⬇ Exportar lista CSV</button>
+        <button class="export-btn" onclick="clearAll()" style="border-color:var(--camera);color:var(--camera)">✕ Limpar tudo</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="pdf-input" accept=".pdf,image/*">
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+
+</body>
+</html>

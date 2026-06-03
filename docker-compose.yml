@@ -1,0 +1,9 @@
+version: '3.8'
+ 
+services:
+  planta-baixa:
+    build: .
+    container_name: planta-baixa-app
+    ports:
+      - "8080:80"    # acessa pelo navegador em http://localhost:8080
+    restart: unless-stopped
