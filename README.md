@@ -26,7 +26,7 @@ App web para mapear pontos de **rede**, **telefone**, **câmera** e **switch** d
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/planta-baixa-app.git
+git clone https://github.com/BorgesJPBD/Projeto-de-Marca-o-Planta-Estrutural.git
 cd planta-baixa-app
 
 # Suba o container
